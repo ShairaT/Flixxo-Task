@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import { Token } from "./Token";
 
-@Entity()
+@Entity('TokenQuote')
 export class TokenQuote {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,11 +9,8 @@ export class TokenQuote {
   @ManyToOne((type) => Token, (token) => token.quotes)
   token: Token;
 
-  @Column()
+  @Column({type: "int", nullable: false, name: "value"})
   value: number;
-
-  @Column()
-  date: Date;
 
   @Column({ type: "timestamp" })
   createdAt: Date;

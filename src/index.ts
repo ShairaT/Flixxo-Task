@@ -2,7 +2,7 @@ import express, { Request, Response, Application } from "express";
 import * as dotenv from "dotenv";
 import "reflect-metadata";
 import { routes } from "./adapters/routes";
-import { AppDataSource } from "./db/config/data-source";
+import AppDataSource from "./data-source";
 
 const port = process.env.PORT || 3000; // default port to listen
 dotenv.config();

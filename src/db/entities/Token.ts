@@ -1,16 +1,16 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { TokenQuote } from "./TokenQuote";
 
-@Entity()
+@Entity('Token')
 export class Token {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({type: "varchar", length: 100, nullable: false, name: "name"})
   name: string;
 
-  @Column()
-  symbol: string;
+  @Column({type: "varchar", length: 10, nullable: false, name: "name"})
+  code: string;
 
   @OneToMany((type) => TokenQuote, (quote) => quote.token)
   quotes: TokenQuote[];
