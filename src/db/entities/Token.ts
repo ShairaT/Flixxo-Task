@@ -9,7 +9,7 @@ export class Token {
   @Column({type: "varchar", length: 100, nullable: false, name: "name"})
   name: string;
 
-  @Column({type: "varchar", length: 10, nullable: false, name: "name"})
+  @Column({type: "varchar", length: 10, nullable: false, name: "code"})
   code: string;
 
   @OneToMany((type) => TokenQuote, (quote) => quote.token)
