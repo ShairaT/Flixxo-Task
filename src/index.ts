@@ -1,21 +1,11 @@
 import express, { Request, Response, Application } from "express";
 import * as dotenv from "dotenv";
 import "reflect-metadata";
-import { auth } from "express-openid-connect";
-
-// import { routes } from "./adapters/routes";
+import { routes } from "./adapters/routes";
+import { AppDataSource } from "./db/config/data-source";
 
 const port = process.env.PORT || 3000; // default port to listen
 dotenv.config();
-
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: "a long, randomly-generated string stored in env",
-  baseURL: "http://localhost:3000",
-  clientID: "BrkfKS04gueXKWxytzhgb6biTLVnLSFP",
-  issuerBaseURL: "https://dev-02desu4qt876dphe.us.auth0.com",
-};
 class App {
   public app: Application;
 
@@ -23,14 +13,28 @@ class App {
     this.app = express();
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.initializeDataBase();
     this.setupRoutes();
   }
 
   private setupRoutes(): void {
-    this.app.use(auth(config));
+    this.app.use("/", routes);
 
-    this.app.get("/", (req, res) => {
-      res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+    this.app.use((_, res) => {
+      res.status(404).json({
+        message: "Page not found",
+        errorCode: "ERROR_NOT_FOUND",
+      });
+    });
+  }
+
+  private initializeDataBase(): void {
+    AppDataSource.initialize()
+    .then(() => {
+      console.log("Data Source has been initialized!");
+    })
+    .catch((err) => {
+      console.error("Error during Data Source initialization:", err);
     });
   }
 }
