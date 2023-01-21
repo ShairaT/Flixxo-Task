@@ -1,0 +1,27 @@
+## Quick Start
+
+Install Node Version Manager [NVM](https://github.com/nvm-sh/nvm).
+
+Install node v16
+
+```bash
+nvm install v14
+```
+
+Complete all ENV variables using .env.example as a guide
+
+```bash
+# install deps
+npm install.
+
+# generate build
+npm run build.
+
+# Run typeorm migrations
+npm run migration:run.
+
+# run in development mode
+# server will listen the 3000 port
+npm run dev
+
+```
