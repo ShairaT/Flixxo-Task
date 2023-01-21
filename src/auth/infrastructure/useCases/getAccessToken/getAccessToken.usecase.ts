@@ -18,11 +18,11 @@ export class GetAccessTokenUseCase {
   ): Promise<IAuth> {
     try {
       const { username, password } = dto;
-      const auth_credentials = await this.authService.getAccessToken(username, password);
-      if (auth_credentials.error) {
+      const authCredentials = await this.authService.getAccessToken(username, password);
+      if (authCredentials.error) {
         throw new UnableToAuthenticate();
       }
-      return auth_credentials;
+      return authCredentials;
     } catch (error) {
       this.logger.error(error);
       if(error instanceof UnableToAuthenticate){

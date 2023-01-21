@@ -7,15 +7,15 @@ import { Logger } from "winston";
 export class AuthService implements IAuthService {
   protected logger;
   private audience: string;
-  private client_id: string;
-  private client_secret: string;
+  private clientId: string;
+  private clientSecret: string;
   private domain: string;
 
   constructor(logger: Logger) {
     this.logger = logger;
     this.audience = process.env.AUTH0_AUDIENCE;
-    this.client_id = process.env.AUTH0_CLIENT_ID;
-    this.client_secret = process.env.AUTH0_CLIENT_SECRET;
+    this.clientId = process.env.AUTH0_CLIENT_ID;
+    this.clientSecret = process.env.AUTH0_CLIENT_SECRET;
     this.domain = process.env.AUTH0_DOMAIN;
   }
 
@@ -27,8 +27,8 @@ export class AuthService implements IAuthService {
       const data = {
         grant_type: 'password',
         audience: this.audience,
-        client_id: this.client_id,
-        client_secret: this.client_secret,
+        client_id: this.clientId,
+        client_secret: this.clientSecret,
         username,
         password,
       };

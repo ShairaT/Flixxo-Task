@@ -1,4 +1,4 @@
-export type updateTokenQuoteDTOType = { 
+export type updateTokenQuoteDTOType = {
     tokenQuoteId: number;
     value: number;
 }
