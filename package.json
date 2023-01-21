@@ -5,6 +5,7 @@
     "main": "dist/index.js",
     "scripts": {
         "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+        "migration:run": "typeorm migration:run -d dist/data-source.js",
         "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
         "compile": "tsc && node dist/index.js",
         "dev": "./node_modules/nodemon/bin/nodemon.js -e ts  --exec \"npm run compile\"",
