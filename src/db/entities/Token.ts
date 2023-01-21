@@ -15,9 +15,9 @@ export class Token {
   @OneToMany((type) => TokenQuote, (quote) => quote.token)
   quotes: TokenQuote[];
 
-  @Column({ type: "timestamp" })
+  @Column({ type: "timestamp", nullable: false, default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
-  @Column({ type: "timestamp" })
+  @Column({ type: "timestamp", nullable: false, default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 }
