@@ -25,3 +25,22 @@ npm run migration:run.
 npm run dev
 
 ```
+
+
+Preguntas:
+
+¿Qué es SQL Injection y cómo puede evitarse?
+SQL Injection es una técnica de ataque en la que un atacante inserta un código malicioso en una consulta SQL para obtener información no autorizada o realizar acciones no deseadas en la base de datos. Algunas buenas prácticas de seguridad para evitarlo son: Utilizar un ORM, usar validadores de los parametros de entrada de las consultas o utilizar un firewall para monitorear y bloquear intentos de sql injection.
+
+¿Cuándo es conveniente utilizar SQL Transactions? Dar un ejemplo.
+las transactions son convenientes de utilizar cuando se deben realizar varias operaciones en la base de datos que deben ser ejecutadas juntas como una sola unidad de trabajo, o sea, deben fallar o tenes éxito juntas.
+Un ejemplo sería cuando se quiere realizar una transferencia bancaria entre dos cuentas, para hacerlo se hacen varias operaciones en la bd, restando el dinero en la cuenta de origen y sumar en la del destinatario y registrar la transaferencia en el historial de ambas. Si alguna falla, se hace un rollback para revertir todas las operaciones.
+
+Describí brevemente las ventajas del patrón controller/service/repository
+Una ventaja sería el separar responsibilidades , cada parte tiene una responsabilidad específica para mantener comprensión y mantenimiento de código. También se utiliza para reutilizar código.
+
+¿Cuál es la mejor forma de guardar un campo de tipo enum en la DB?
+Para el caso de Mysql, se tiene el tipo de dato ENUM que se utiliza para crear una lista de valores permitidos para un campo.
+
+Usando async/await: ¿cómo se puede aprovechar el paralelismo?
+Para aprovechar el paralelismo se puede utilizar el Promise.all para ejecutar varias promesas de forma paralela y esperar a que todas terminen antes de continuar con la ejecución.
